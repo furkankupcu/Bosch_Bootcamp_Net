@@ -10,7 +10,7 @@ namespace BoschBootcamp.EntityLayer.Concrete
     public class Injector
     {
         [Key]
-        public int InjectorID { get; set; }
+        public int Injector_ID { get; set; }
 
         public string ModelNumber { get; set; }
 
