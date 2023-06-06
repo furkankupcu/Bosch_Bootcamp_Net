@@ -102,5 +102,9 @@ namespace BoschBootcamp.BusinessLayer.Concrete
             return bBContext.BB_Subcomponent.Count();
         }
 
+        public List<int> GetNotAddedSubcomponents()
+        {
+            return (from e in bBContext.BB_Subcomponent select e.SubcomponentID).Except(from m in bBContext.BB_StationProcess select m.SubcomponentID).ToList();
+        }
     }
 }

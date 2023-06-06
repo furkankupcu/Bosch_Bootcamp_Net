@@ -21,5 +21,11 @@ namespace BoschBootcamp.Controllers
         
             return Ok(subcomponentService.GetAllSubcomponents());
         }
+       
+        [HttpGet("GetNotAddedSubcomponents")]
+        public IActionResult GetNotAddedSubcomponents()
+        {
+            return Ok(subcomponentService.GetNotAddedSubcomponents());
+        }
     }
 }

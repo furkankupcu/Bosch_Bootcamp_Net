@@ -20,5 +20,7 @@ namespace BoschBootcamp.BusinessLayer.Abstract
         public Subcomponent GetSubcomponentById(int id);
 
         public int GetSubcomponentCount(int id);
+
+        public List<int> GetNotAddedSubcomponents();
     }
 }
