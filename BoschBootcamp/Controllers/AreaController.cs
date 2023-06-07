@@ -46,7 +46,7 @@ namespace BoschBootcamp.Controllers
             }
         }
         
-        [HttpDelete("delete{id}")]
+        [HttpDelete("delete")]
         public IActionResult DeleteArea(char areaId) {
 
             var status = areaService.DeleteArea(new Area { AreaId = areaId});

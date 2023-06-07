@@ -25,7 +25,7 @@ namespace BoschBootcamp.Controllers
             var models = modelService.GetAllModels();
             if (models.Count() == 0)
             {
-                return BadRequest("Failed"); //add Enum
+                return BadRequest("Failed"); 
             }
             else
             {
