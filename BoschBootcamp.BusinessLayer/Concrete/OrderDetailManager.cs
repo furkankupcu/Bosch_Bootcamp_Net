@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BoschBootcamp.BusinessLayer.Concrete
 {
-    public class OrderDetailService : IOrderDetailService
+    public class OrderDetailManager : IOrderDetailService
     {
         private readonly BBContext bBContext;
 
-        public OrderDetailService(BBContext bBContext)
+        public OrderDetailManager(BBContext bBContext)
         {
             this.bBContext = bBContext;
         }

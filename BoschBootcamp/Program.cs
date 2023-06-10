@@ -1,4 +1,5 @@
 using BoschBootcamp.BusinessLayer.Abstract;
+using BoschBootcamp.BusinessLayer.BusinessRules;
 using BoschBootcamp.BusinessLayer.Concrete;
 using BoschBootcamp.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
@@ -12,16 +13,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BBContext>();
-builder.Services.AddScoped<IModelService, ModelService>();
-builder.Services.AddScoped<IAreaService, AreaService>();
-builder.Services.AddScoped<IInjectorService, InjectorService>();
-builder.Services.AddScoped<IDepartmentService, DepartmentService>();
-builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<ISectionService, SectionService>();
-builder.Services.AddScoped<IStationService, StationService>();
-builder.Services.AddScoped<IStationProcessService, StationProcessService>();
-builder.Services.AddScoped<ISubcomponentService, SubcomponentService>();
+builder.Services.AddScoped<IModelService, ModelManager>();
+builder.Services.AddScoped<IAreaService, AreaManager>();
+builder.Services.AddScoped<IInjectorService, InjectorManager>();
+builder.Services.AddScoped<IDepartmentService, DepartmentManager>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
+builder.Services.AddScoped<IOrderService, OrderManager>();
+builder.Services.AddScoped<ISectionService, SectionManager>();
+builder.Services.AddScoped<IStationService, StationManager>();
+builder.Services.AddScoped<IStationProcessService, StationProcessManager>();
+builder.Services.AddScoped<ISubcomponentService, SubcomponentManager>();
+builder.Services.AddScoped<ModelsBusinessRule>();
+builder.Services.AddScoped<InjectorBusinessRule>();
+builder.Services.AddScoped<OrderBusinessRule>();
 
 
 

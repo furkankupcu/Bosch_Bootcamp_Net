@@ -1,4 +1,5 @@
-﻿using BoschBootcamp.EntityLayer.Concrete;
+﻿using BoschBootcamp.BusinessLayer.Response;
+using BoschBootcamp.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Identity.Client;
 using System;
@@ -11,11 +12,11 @@ namespace BoschBootcamp.BusinessLayer.Abstract
 {
     public interface IInjectorService
     {
-        public bool AddInjector(Injector injector);
+        public BusinessResponse AddInjector(Injector injector);
 
-        public bool RemoveInjector();
+        public BusinessResponse DeleteInjector(Injector injector);
 
-        public bool UpdateInjector();
+        public BusinessResponse UpdateInjector(Injector injector);
 
         public List<Injector> GetAllInjectors();
 

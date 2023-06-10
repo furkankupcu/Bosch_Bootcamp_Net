@@ -1,4 +1,5 @@
-﻿using BoschBootcamp.EntityLayer.Concrete;
+﻿using BoschBootcamp.BusinessLayer.Response;
+using BoschBootcamp.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ namespace BoschBootcamp.BusinessLayer.Abstract
     public interface IModelService
     {
     
-        public bool AddModel(Models model);
+        public BusinessResponse AddModel(Models model);
 
-        public bool UpdateModel(Models model);
+        public BusinessResponse UpdateModel(Models model);
 
-        public bool DeleteModel(Models model);
+        public BusinessResponse DeleteModel(Models model);
 
         public List<Models> GetAllModels();
 

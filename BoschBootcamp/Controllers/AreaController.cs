@@ -31,48 +31,5 @@ namespace BoschBootcamp.Controllers
                 return Ok(areas);
             }
         }
-        
-        [HttpPost]
-        public IActionResult AddArea(char areaId, string areaName) { 
-        
-            var status = areaService.AddArea(new Area { AreaId= areaId, AreaName = areaName });
-            if (status)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        
-        [HttpDelete("delete")]
-        public IActionResult DeleteArea(char areaId) {
-
-            var status = areaService.DeleteArea(new Area { AreaId = areaId});
-            if (status)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpPut]
-        public IActionResult UpdateArea(char areaId,string areaName)
-        {
-            var status = areaService.UpdateArea(new Area{ AreaId = areaId, AreaName = areaName });
-            if (status)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        
     }
 }

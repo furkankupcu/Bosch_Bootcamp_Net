@@ -1,4 +1,6 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
+using BoschBootcamp.BusinessLayer.BusinessRules;
+using BoschBootcamp.BusinessLayer.Response;
 using BoschBootcamp.DataAccessLayer.Concrete;
 using BoschBootcamp.EntityLayer.Concrete;
 using System;
@@ -9,77 +11,80 @@ using System.Threading.Tasks;
 
 namespace BoschBootcamp.BusinessLayer.Concrete
 {
-    public class ModelService : IModelService
+    public class ModelManager : IModelService, IDisposable
     {
         private readonly BBContext bbContext;
+        private readonly ModelsBusinessRule _modelsBusinessRule;
 
-        public ModelService(BBContext bbContext) {
+        public ModelManager(BBContext bbContext, ModelsBusinessRule modelsBusinessRule) {
             this.bbContext = bbContext;
+            this._modelsBusinessRule = modelsBusinessRule;
         }
 
-        public bool AddModel(Models model)
+        public BusinessResponse AddModel(Models model)
         {
-            var result = bbContext.BB_Models.Any(b => b.ModelNumber ==  model.ModelNumber);
+            var result = _modelsBusinessRule.ModelIsExist(model.ModelNumber);
             if (!result)
             {
                 try
                 {
                     bbContext.BB_Models.Add(model);
                     bbContext.SaveChanges();
-                    return true;
+                    return new BusinessResponse { Success = true, Message = "Model added successfully." };
                 }
-                catch (Exception)
-                {   
-                    return false;
+                catch (Exception e)
+                {
+                    return new BusinessResponse { Success = false, Message = e.Message };
                 }
             }
             else
             {
-                return false;
+                return new BusinessResponse { Success = false, Message = "The model already exists." };
             }
         }
 
-        public bool DeleteModel(Models model)
+        public BusinessResponse DeleteModel(Models model)
         {
-            var result = bbContext.BB_Models.Any(b => b.ModelNumber == model.ModelNumber);
+            var result = _modelsBusinessRule.ModelIsExist(model.ModelNumber);
             if (result)
             {
                 try
                 {
                     bbContext.BB_Models.Remove(model);
                     bbContext.SaveChanges();
-                    return true;
+                    return new BusinessResponse { Success = true, Message = "Model deleted successfully." };
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return false;
+                    return new BusinessResponse { Success = false, Message = e.Message};
                 }
             }
             else
             {
-                return false;
+                return new BusinessResponse { Success = false, Message = "The model not exists." };
             }
         }
 
-        public bool UpdateModel(Models model)
+        public BusinessResponse UpdateModel(Models model)
         {
-            var result = bbContext.BB_Models.Any(b => b.ModelNumber == model.ModelNumber);
+
+            var result = _modelsBusinessRule.ModelIsExist(model.ModelNumber);
             if (result)
             {
                 try
                 {
                     bbContext.Update(model);
                     bbContext.SaveChanges();
-                    return true;
+                    return new BusinessResponse { Success = true, Message = "Model updated successfully." };
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return false;
+                    return new BusinessResponse { Success = false, Message = e.Message };
                 }
             }
             else
             {
-                return false;
+                return new BusinessResponse { Success = false, Message = "The model not exists." };
             }
         }
 
@@ -104,5 +109,9 @@ namespace BoschBootcamp.BusinessLayer.Concrete
             return bbContext.BB_Injector.Where(X => X.ModelNumber == id).Count();
         }
 
+        public void Dispose()
+        {
+            ((IDisposable)bbContext).Dispose();
+        }
     }
 }

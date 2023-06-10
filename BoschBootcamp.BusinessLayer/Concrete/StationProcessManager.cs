@@ -9,41 +9,41 @@ using System.Threading.Tasks;
 
 namespace BoschBootcamp.BusinessLayer.Concrete
 {
-    public class SectionService : ISectionService
+    public class StationProcessManager : IStationProcessService
     {
         private readonly BBContext bBContext;
 
-        public SectionService(BBContext bBContext) {
-            
+        public StationProcessManager(BBContext bBContext)
+        {
             this.bBContext = bBContext;
         }
 
-        public bool AddSection(Section setion)
+        public bool AddStationProcess(StationProcess stationProcess)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteSection(Section setion)
+        public bool DeleteStationProcess(StationProcess stationProcess)
         {
             throw new NotImplementedException();
         }
 
-        public List<Section> GetAllSections()
-        {
-            return bBContext.BB_Section.ToList();
-        }
-
-        public Section GetSectionById(int id)
+        public Station GetStationProcessById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int GetSectionCount()
+        public int GetStationProcessCount()
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateSection(Section setion)
+        public List<StationProcess> GetStationProcesses()
+        {
+            return bBContext.BB_StationProcess.ToList();
+        }
+
+        public bool UpdateStationProcess(StationProcess stationProcess)
         {
             throw new NotImplementedException();
         }

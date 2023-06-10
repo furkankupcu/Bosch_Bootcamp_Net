@@ -1,4 +1,5 @@
-﻿using BoschBootcamp.EntityLayer.Concrete;
+﻿using BoschBootcamp.BusinessLayer.Response;
+using BoschBootcamp.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,13 @@ namespace BoschBootcamp.BusinessLayer.Abstract
     { 
         public List<Order> GetOrders();
 
-        public bool AddOrder(Order order);
+        public BusinessResponse AddOrder(Order order);
 
-        public bool UpdateOrder(Order order);
+        public BusinessResponse UpdateOrder(Order order);
 
-        public bool DeleteOrder(Order order);
+        public BusinessResponse DeleteOrder(Order order);
 
-        public OrderDetail GetOrderByID(int id);
+        public Order GetOrderByID(int id);
 
         public int GetModelCount(string id);
     }

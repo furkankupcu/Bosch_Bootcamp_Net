@@ -9,41 +9,41 @@ using System.Threading.Tasks;
 
 namespace BoschBootcamp.BusinessLayer.Concrete
 {
-    public class OrderService : IOrderService
+    public class SectionManager : ISectionService
     {
         private readonly BBContext bBContext;
 
-        public OrderService(BBContext bBContext)
-        {
+        public SectionManager(BBContext bBContext) {
+            
             this.bBContext = bBContext;
         }
 
-        public bool AddOrder(Order order)
+        public bool AddSection(Section setion)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteOrder(Order order)
+        public bool DeleteSection(Section setion)
         {
             throw new NotImplementedException();
         }
 
-        public int GetModelCount(string id)
+        public List<Section> GetAllSections()
+        {
+            return bBContext.BB_Section.ToList();
+        }
+
+        public Section GetSectionById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public OrderDetail GetOrderByID(int id)
+        public int GetSectionCount()
         {
             throw new NotImplementedException();
         }
 
-        public List<Order> GetOrders()
-        {
-            return bBContext.BB_Order.ToList();
-        }
-
-        public bool UpdateOrder(Order order)
+        public bool UpdateSection(Section setion)
         {
             throw new NotImplementedException();
         }

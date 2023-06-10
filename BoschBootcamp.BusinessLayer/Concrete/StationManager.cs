@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace BoschBootcamp.BusinessLayer.Concrete
 {
 
-    public class StationService : IStationService
+    public class StationManager : IStationService
     {
         private readonly BBContext bBContext;
 
-        public StationService(BBContext bBContext)
+        public StationManager(BBContext bBContext)
         {
             this.bBContext = bBContext;
         }

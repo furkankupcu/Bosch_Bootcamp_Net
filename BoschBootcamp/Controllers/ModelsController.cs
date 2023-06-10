@@ -1,5 +1,6 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
 using BoschBootcamp.BusinessLayer.Concrete;
+using BoschBootcamp.BusinessLayer.Response;
 using BoschBootcamp.DataAccessLayer.Concrete;
 using BoschBootcamp.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -22,58 +23,30 @@ namespace BoschBootcamp.Controllers
         [HttpGet]
         public IActionResult GetModels()
         {
-            var models = modelService.GetAllModels();
-            if (models.Count() == 0)
-            {
-                return BadRequest("Failed"); 
-            }
-            else
-            {
-                return Ok(models);
-            }
-            
+            return Ok(modelService.GetAllModels()); 
         }
         
         [HttpPost]
         public IActionResult AddModel(string number, string name)
         {
-            var status = modelService.AddModel(new Models{ ModelNumber = number,ModelName=name });
-            if (status)
-            {
-                return Ok("Success");
-            }
-            else
-            {
-                return BadRequest("Failed");
-            }
+            BusinessResponse status = modelService.AddModel(new Models{ ModelNumber = number,ModelName=name });
+            
+            return status.Success ? Ok(status) : BadRequest(status);
+
         }
 
         [HttpDelete("delete{id}")]
         public IActionResult DeleteModel(string id)
         {
             var status = modelService.DeleteModel(new Models { ModelNumber = id});
-            if (status)
-            {
-                return Ok("Success");
-            }
-            else
-            {
-                return BadRequest("Failed");
-            }
+            return status.Success ? Ok(status) : BadRequest(status);
         }
 
         [HttpPut]
         public IActionResult UpdateModel(string id,string name)
         {
             var status = modelService.UpdateModel(new Models { ModelName = name, ModelNumber = id });
-            if (status)
-            {
-                return Ok("Success");
-            }
-            else
-            {
-                return BadRequest("Failed");
-            }
+            return status.Success ? Ok(status) : BadRequest(status);
         }
 
         
