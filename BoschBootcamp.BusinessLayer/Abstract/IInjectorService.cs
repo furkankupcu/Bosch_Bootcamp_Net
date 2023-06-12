@@ -5,8 +5,10 @@ using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 
 namespace BoschBootcamp.BusinessLayer.Abstract
 {
@@ -23,6 +25,8 @@ namespace BoschBootcamp.BusinessLayer.Abstract
         public Injector GetInjectorByID(int id);
 
         public int GetInjectorCount();
+
+        public List<object> getModelsCount();
 
     }
 }

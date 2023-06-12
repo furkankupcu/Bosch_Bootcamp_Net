@@ -9,6 +9,8 @@ import { ChartComponent } from './core/chart/chart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddsubcomponentComponent } from './components/addsubcomponent/addsubcomponent.component';
 import { FormsModule, NgModel } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 
 @NgModule({
@@ -17,7 +19,7 @@ import { FormsModule, NgModel } from '@angular/forms';
     CreateOrderComponent,
     HeaderComponent,
     ChartComponent,
-    AddsubcomponentComponent,
+    AddsubcomponentComponent
   ],
 
   imports: [
@@ -25,7 +27,9 @@ import { FormsModule, NgModel } from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule,
+    CanvasJSAngularChartsModule
   ],
   providers: [
     {provide:"baseUrl",useValue:"https://localhost:7154/api",multi:true}

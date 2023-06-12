@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 
 namespace BoschBootcamp.BusinessLayer.Concrete
 {
@@ -105,6 +106,14 @@ namespace BoschBootcamp.BusinessLayer.Concrete
             return bBContext.BB_Injector.Count();
         }
 
-        
+        public List<object> getModelsCount()
+        {
+            var result = bBContext.BB_Injector
+                .GroupBy(x => x.ModelNumber)
+                .Select(group => new { ModelNumber = group.Key, Toplam = group.Count() })
+                .ToList<object>();
+
+            return result;
+        }
     }
 }

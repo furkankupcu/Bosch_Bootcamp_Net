@@ -69,5 +69,11 @@ namespace BoschBootcamp.Controllers
             var status = injectorService.UpdateInjector(currentInjector);
             return status.Success ? Ok(status) : BadRequest(status);
         }
+
+        [HttpGet("ModelCount")]
+        public IActionResult countInjectorModel()
+        {
+            return Ok(injectorService.getModelsCount());
+        }
     }
 }
