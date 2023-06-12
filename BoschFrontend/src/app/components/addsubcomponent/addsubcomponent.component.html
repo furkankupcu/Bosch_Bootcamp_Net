@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row mt-4 border-bottom border-dark" style="margin-bottom: 10px;">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div>
+        <p> Injector Id</p>
+        <input type="text" class="form-control" [(ngModel)]="injectorId">
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-xs-12 col-md-12 col-lg-2">
+      <div>
+        <p> İstasyon-1</p>
+        <input type="text" class="form-control" [(ngModel)]="st1">
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" style="margin: 10px;" (click)="addSubcomponent(1,st1)">Ekle</button>
+      </div>
+    </div><!-- subcomponent1-->
+
+    <div class="col-xs-12 col-md-12 col-lg-2">
+      <div>
+        <div>
+          <p> İstasyon-2</p>
+          <input type="text" class="form-control" [(ngModel)]="st2">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" style="margin: 10px;" (click)="addSubcomponent(2,st2)" >Ekle</button>
+      </div>
+    </div><!-- subcomponent2-->
+
+    <div class="col-xs-12 col-md-12 col-lg-2">
+      <div>
+        <div>
+          <p> İstasyon-3</p>
+          <input type="text" class="form-control" [(ngModel)]="st3">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" style="margin: 10px;" (click)="addSubcomponent(3,st3)">Ekle</button>
+      </div>
+    </div><!-- subcomponent3-->
+
+    <div class="col-xs-12 col-md-12 col-lg-2">
+      <div>
+        <div>
+          <p> İstasyon-4</p>
+          <input type="text" class="form-control" [(ngModel)]="st4">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" style="margin: 10px;" (click)="addSubcomponent(4,st4)">Ekle</button>
+      </div>
+    </div><!-- subcomponent4-->
+
+    <div class="col-xs-12 col-md-12 col-lg-2">
+      <div>
+        <div>
+          <p> İstasyon-5</p>
+          <input type="text" class="form-control" [(ngModel)]="st5">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" style="margin: 10px;" (click)="addSubcomponent(5,st5)">Ekle</button>
+      </div>
+    </div><!-- subcomponent5-->
+
+    <div class="col-xs-12 col-md-12 col-lg-2">
+      <div>
+        <div>
+          <p> İstasyon-6 </p>
+          <input type="text" class="form-control" [(ngModel)]="st6">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" style="margin: 10px;" (click)="addSubcomponent(6,st6)">Ekle</button>
+      </div>
+    </div><!-- subcomponent6-->
+  </div><!-- row4-->
+</div>
+<router-outlet></router-outlet>

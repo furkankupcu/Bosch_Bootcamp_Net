@@ -18,6 +18,6 @@ namespace BoschBootcamp.EntityLayer.Concrete
 
         public DateTime ProcessTime { get; set; }
 
-        public string? ProcessStatus { get; set; }
+        public int ProcessStatus { get; set; }
     }
 }

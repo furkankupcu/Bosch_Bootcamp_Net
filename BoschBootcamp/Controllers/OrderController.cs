@@ -1,5 +1,6 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
 using BoschBootcamp.BusinessLayer.Concrete;
+using BoschBootcamp.BusinessLayer.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoschBootcamp.Controllers
@@ -29,5 +30,11 @@ namespace BoschBootcamp.Controllers
             }
         }
 
+        [HttpGet("newOrderId")]
+        public IActionResult NewId()
+        {
+            int count = orderService.GetOrders().Count + 1;
+            return Ok(count);
+        }
     }
 }

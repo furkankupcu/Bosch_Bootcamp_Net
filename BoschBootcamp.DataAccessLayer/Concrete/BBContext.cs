@@ -36,6 +36,8 @@ namespace BoschBootcamp.DataAccessLayer.Concrete
         public DbSet<StationProcess> BB_StationProcess { get; set; }
 
         public DbSet<Subcomponent> BB_Subcomponent { get; set; }
+
+        public DbSet<SubcomponentTypes> BB_SubcomponentType { get; set; }
     }
 
    

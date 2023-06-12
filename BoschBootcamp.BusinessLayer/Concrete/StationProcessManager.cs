@@ -1,4 +1,6 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
+using BoschBootcamp.BusinessLayer.BusinessRules;
+using BoschBootcamp.BusinessLayer.Response;
 using BoschBootcamp.DataAccessLayer.Concrete;
 using BoschBootcamp.EntityLayer.Concrete;
 using System;
@@ -12,18 +14,37 @@ namespace BoschBootcamp.BusinessLayer.Concrete
     public class StationProcessManager : IStationProcessService
     {
         private readonly BBContext bBContext;
+        private readonly StationProcessBusinessRule stationProcessBusinessRule;
 
-        public StationProcessManager(BBContext bBContext)
+        public StationProcessManager(BBContext bBContext, StationProcessBusinessRule stationProcessBusinessRule)
         {
             this.bBContext = bBContext;
+            this.stationProcessBusinessRule= stationProcessBusinessRule;
         }
 
-        public bool AddStationProcess(StationProcess stationProcess)
+        public BusinessResponse AddStationProcess(StationProcess stationProcess)
         {
-            throw new NotImplementedException();
+            //var result = stationProcessBusinessRule.StationProcessIsExists(stationProcess.InjectorID,stationProcess.SubcomponentID);
+            //if (!result)
+            //{
+                try
+                {
+                    bBContext.BB_StationProcess.Add(stationProcess);
+                    bBContext.SaveChanges();
+                    return new BusinessResponse { Success= true , Message= "Station Process added successfully." };
+                }
+                catch (Exception e)
+                {
+                    return new BusinessResponse { Success= false, Message= e.Message };
+                }
+            //}
+            //else
+            //{
+               // return new BusinessResponse { Success = false, Message = "Station Process already exists." };
+            //}
         }
 
-        public bool DeleteStationProcess(StationProcess stationProcess)
+        public BusinessResponse DeleteStationProcess(StationProcess stationProcess)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +64,7 @@ namespace BoschBootcamp.BusinessLayer.Concrete
             return bBContext.BB_StationProcess.ToList();
         }
 
-        public bool UpdateStationProcess(StationProcess stationProcess)
+        public BusinessResponse UpdateStationProcess(StationProcess stationProcess)
         {
             throw new NotImplementedException();
         }

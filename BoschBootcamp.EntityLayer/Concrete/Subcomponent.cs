@@ -12,10 +12,6 @@ namespace BoschBootcamp.EntityLayer.Concrete
         [Key]
         public int SubcomponentID { get; set; }
 
-        public int? InjectorID { get; set; }
-
-        public int StationID { get; set; }
-
-        public decimal SubcomponentCost { get; set; }
+        public int SubcomponentType { get; set; }
     }
 }

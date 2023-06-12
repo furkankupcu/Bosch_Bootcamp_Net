@@ -1,6 +1,8 @@
-﻿using BoschBootcamp.BusinessLayer.Abstract;
+﻿using Azure.Core;
+using BoschBootcamp.BusinessLayer.Abstract;
 using BoschBootcamp.BusinessLayer.Response;
 using BoschBootcamp.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoschBootcamp.Controllers
@@ -16,16 +18,19 @@ namespace BoschBootcamp.Controllers
         }
 
         [HttpGet]
+        [EnableCors("AllowOrigin")]
         public IActionResult GetInjectors() {
 
             return Ok(injectorService.GetAllInjectors());
         }
 
-        [HttpGet("addInjector")]
-        public IActionResult AddInjector(string modelNumber,int orderId)
-        {
+        
+        [HttpPost("addInjector")]
+        [EnableCors("AllowOrigin")]
+        public IActionResult AddInjector(string modelNumber, decimal price, string injectorStatus, int orderId)
+        { 
             int index = injectorService.GetInjectorCount() + 1;
-            BusinessResponse status = injectorService.AddInjector( new Injector {Injector_ID = index, ModelNumber = modelNumber, InjectorStatus = "GOOD", OrderID = orderId });
+            BusinessResponse status = injectorService.AddInjector( new Injector {Injector_ID = index, ModelNumber = modelNumber,InjectorPrice=price, InjectorStatus = injectorStatus, OrderID = orderId });
 
             return status.Success ? Ok(status) : BadRequest(status);
 
@@ -48,7 +53,7 @@ namespace BoschBootcamp.Controllers
             return Ok("Injectors added.");
         }
 
-        [HttpDelete("delete{id}")]
+        [HttpDelete()]
         public IActionResult DeleteInjector(int id)
         {
             var status = injectorService.DeleteInjector(new Injector { Injector_ID = id });
@@ -64,15 +69,5 @@ namespace BoschBootcamp.Controllers
             var status = injectorService.UpdateInjector(currentInjector);
             return status.Success ? Ok(status) : BadRequest(status);
         }
-        
     }
 }
-/*public int Injector_ID { get; set; }
-
-        public string ModelNumber { get; set; }
-
-        public decimal InjectorPrice { get; set; }
-
-        public string? InjectorStatus { get; set; }
-
-        public int OrderID { get; set; }*/

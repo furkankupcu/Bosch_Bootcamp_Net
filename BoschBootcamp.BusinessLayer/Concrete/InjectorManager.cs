@@ -36,7 +36,6 @@ namespace BoschBootcamp.BusinessLayer.Concrete
                 }
                 catch (Exception e)
                 {
-
                     return new BusinessResponse { Success = false, Message = e.Message };
                 }
                 

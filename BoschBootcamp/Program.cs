@@ -23,9 +23,13 @@ builder.Services.AddScoped<ISectionService, SectionManager>();
 builder.Services.AddScoped<IStationService, StationManager>();
 builder.Services.AddScoped<IStationProcessService, StationProcessManager>();
 builder.Services.AddScoped<ISubcomponentService, SubcomponentManager>();
+builder.Services.AddScoped<ISubcomponentTypesService, SubcomponentTypesManager>();
 builder.Services.AddScoped<ModelsBusinessRule>();
 builder.Services.AddScoped<InjectorBusinessRule>();
 builder.Services.AddScoped<OrderBusinessRule>();
+builder.Services.AddScoped<OrderDetailBusinessRules>();
+builder.Services.AddScoped<StationProcessBusinessRule>();
+builder.Services.AddCors(c => c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()));
 
 
 
@@ -37,7 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

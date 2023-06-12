@@ -104,7 +104,5 @@ namespace BoschBootcamp.BusinessLayer.Concrete
         {
             return bBContext.BB_Order.ToList();
         }
-
-        
     }
 }

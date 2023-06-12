@@ -50,10 +50,15 @@ CREATE TABLE BB_Station(
 	StationID INT PRIMARY KEY,
 )
 GO
+CREATE TABLE BB_SubcomponentType(
+	SubcomponentType INT PRIMARY KEY,
+	StationID INT FOREIGN KEY REFERENCES BB_Station(StationID) NOT NULL,
+	SubcomponentCost DECIMAL(19, 4) NOT NULL
+)
+GO 
 CREATE TABLE BB_Subcomponent(
- SubcomponentID INT PRIMARY KEY,
- StationID INT FOREIGN KEY REFERENCES BB_Station(StationID) NOT NULL,
- SubcomponentCost DECIMAL(19, 4) NOT NULL,
+	SubcomponentID INT PRIMARY KEY,
+	SubcomponentType INT FOREIGN KEY REFERENCES  BB_SubcomponentType(SubcomponentType) NOT NULL,
 )
 GO 
 CREATE TABLE BB_StationProcess( --Hangi istasyonda,ne zaman, hangi enjektöre, hangi alt parça eklenmiþ? 
@@ -61,6 +66,7 @@ CREATE TABLE BB_StationProcess( --Hangi istasyonda,ne zaman, hangi enjektöre, ha
     InjectorID INT FOREIGN KEY REFERENCES BB_Injector(Injector_ID) NOT NULL,
 	SubcomponentID INT REFERENCES BB_Subcomponent(SubcomponentID) NOT NULL,
 	ProcessTime SMALLDATETIME NOT NULL,
+	ProcessStatus INT NOT NULL, --0 :iyi , 1: kötü
 )
 
 

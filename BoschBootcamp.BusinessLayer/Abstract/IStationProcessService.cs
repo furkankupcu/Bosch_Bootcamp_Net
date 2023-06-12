@@ -1,4 +1,5 @@
-﻿using BoschBootcamp.EntityLayer.Concrete;
+﻿using BoschBootcamp.BusinessLayer.Response;
+using BoschBootcamp.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,11 @@ namespace BoschBootcamp.BusinessLayer.Abstract
     {
         public List<StationProcess> GetStationProcesses();
 
-        public bool AddStationProcess(StationProcess stationProcess);
+        public BusinessResponse AddStationProcess(StationProcess stationProcess);
 
-        public bool UpdateStationProcess(StationProcess stationProcess);
+        public BusinessResponse UpdateStationProcess(StationProcess stationProcess);
 
-        public bool DeleteStationProcess(StationProcess stationProcess);
+        public BusinessResponse DeleteStationProcess(StationProcess stationProcess);
 
         public Station GetStationProcessById(int id);
 

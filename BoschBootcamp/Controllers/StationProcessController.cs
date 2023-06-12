@@ -1,5 +1,7 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
+using BoschBootcamp.BusinessLayer.Response;
 using BoschBootcamp.DataAccessLayer.Concrete;
+using BoschBootcamp.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoschBootcamp.Controllers
@@ -19,6 +21,17 @@ namespace BoschBootcamp.Controllers
         public IActionResult GetStationProcesses() {
         
             return Ok(stationProcessService.GetStationProcesses());
+        }
+
+        [HttpPost]
+        public IActionResult AddStationProcesses(int stationId,int InjectorId,int subcomponentId,int processStatus) {
+
+            DateTime date= DateTime.Now;
+            BusinessResponse status = stationProcessService.AddStationProcess(
+                new StationProcess { StationID = stationId, InjectorID= InjectorId, SubcomponentID= subcomponentId,ProcessTime=date,ProcessStatus= processStatus});
+
+            return status.Success ? Ok(status) : BadRequest(status);
+
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
+using BoschBootcamp.BusinessLayer.BusinessRules;
+using BoschBootcamp.BusinessLayer.Response;
 using BoschBootcamp.DataAccessLayer.Concrete;
 using BoschBootcamp.EntityLayer.Concrete;
 using System;
@@ -12,18 +14,37 @@ namespace BoschBootcamp.BusinessLayer.Concrete
     public class OrderDetailManager : IOrderDetailService
     {
         private readonly BBContext bBContext;
+        private readonly OrderDetailBusinessRules orderDetailBusinessRules;
 
-        public OrderDetailManager(BBContext bBContext)
+        public OrderDetailManager(BBContext bBContext, OrderDetailBusinessRules orderDetailBusinessRules)
         {
             this.bBContext = bBContext;
+            this.orderDetailBusinessRules= orderDetailBusinessRules;
         }
 
-        public bool AddOrderDetail(OrderDetail model)
+        public BusinessResponse AddOrderDetail(OrderDetail orderDetail)
         {
-            throw new NotImplementedException();
+            var result = orderDetailBusinessRules.OrderDetailIsExist(orderDetail.OrderID,orderDetail.ModelNumber);
+            if (!result)
+            {
+                try
+                {
+                    bBContext.BB_OrderDetail.AddAsync(orderDetail);
+                    bBContext.SaveChangesAsync();
+                    return new BusinessResponse { Success = true, Message = "OrderDetail added successfully." };
+                }
+                catch (Exception e)
+                {
+                    return new BusinessResponse { Success = false, Message = e.Message };
+                }
+            }
+            else
+            {
+                return new BusinessResponse { Success = true, Message = "OrderDetail already exists." };
+            }
         }
 
-        public bool DeleteOrderDetail(OrderDetail model)
+        public BusinessResponse DeleteOrderDetail(OrderDetail orderDetail)
         {
             throw new NotImplementedException();
         }
@@ -48,7 +69,7 @@ namespace BoschBootcamp.BusinessLayer.Concrete
             return bBContext.BB_OrderDetail.ToList();
         }
 
-        public bool UpdateOrderDetail(OrderDetail model)
+        public BusinessResponse UpdateOrderDetail(OrderDetail model)
         {
             throw new NotImplementedException();
         }

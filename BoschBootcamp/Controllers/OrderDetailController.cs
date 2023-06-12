@@ -1,5 +1,7 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
 using BoschBootcamp.BusinessLayer.Concrete;
+using BoschBootcamp.BusinessLayer.Response;
+using BoschBootcamp.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoschBootcamp.Controllers
@@ -30,5 +32,12 @@ namespace BoschBootcamp.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult AddOrderDetail(int orderId, string modelNumber, int quantity)
+        {
+            BusinessResponse status = orderDetailService.AddOrderDetail(
+                new OrderDetail { OrderID = orderId, ModelNumber = modelNumber, OrderQuantity = quantity});
+            return status.Success ? Ok(status) : BadRequest();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BoschBootcamp.DataAccessLayer.Concrete;
+using BoschBootcamp.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
