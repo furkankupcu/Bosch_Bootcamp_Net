@@ -112,7 +112,7 @@ namespace BoschBootcamp.BusinessLayer.Concrete
                 .GroupBy(x => x.ModelNumber)
                 .Select(group => new { ModelNumber = group.Key, Toplam = group.Count() })
                 .ToList<object>();
-
+            
             return result;
         }
     }

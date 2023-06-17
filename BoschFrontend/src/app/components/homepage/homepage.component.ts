@@ -8,28 +8,7 @@ import { HttpClientService } from 'src/app/services/common/http-client.service';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit{ 
+export class HomepageComponent{ 
 
-  constructor(private httpClientService : HttpClientService){}
-  
 
-  ngOnInit(): void{
-  }
-
-  chartOptions = {
-    data: [{
-      type: "column",
-      dataPoints: [
-        this.updateChartData
-      ]
-    }]                
-  };
-
-  updateChartData(){
-      return this.httpClientService.get<number>({controller:"Injectors", action:"ModelCount"}).subscribe();
-  }
-  
-  
-  
-  
 }
