@@ -14,7 +14,8 @@ namespace BoschBootcamp.DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-62D526Q; database=Bosch_Bootcamp;Trusted_Connection=True;TrustServerCertificate=True");
+            //optionsBuilder.UseSqlServer("server=DESKTOP-62D526Q; database=Bosch_Bootcamp;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("User Id=bbnet-server-admin ; Password=Bootcamp41 ;server=bbnet-server.database.windows.net; database=Bosch_Bootcamp;Trusted_Connection=False;Encrypt=True;");
         }
 
         public DbSet<Area> BB_Area { get; set; }
