@@ -1,6 +1,7 @@
 ﻿using BoschBootcamp.BusinessLayer.Abstract;
 using BoschBootcamp.BusinessLayer.Concrete;
 using BoschBootcamp.BusinessLayer.Response;
+using BoschBootcamp.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoschBootcamp.Controllers
@@ -35,6 +36,14 @@ namespace BoschBootcamp.Controllers
         {
             int count = orderService.GetOrders().Count + 1;
             return Ok(count);
+        }
+
+        [HttpPost("newOrder")]
+        public IActionResult CreateOrder(int newId)
+        {
+            BusinessResponse status = orderService.AddOrder(new Order{ OrderID = newId, OrderDate = DateTime.Now});
+
+            return status.Success ? Ok(status) : BadRequest(status);
         }
     }
 }
