@@ -2,6 +2,8 @@
 
 This project was developed using MS SQL, .NET, ANGULAR.
 
+N-Tier architecture was used.
+
 Frontend: https://github.com/furkankupcu/Bosch_Bootcamp_Angular
 
 UML Diagram: 
