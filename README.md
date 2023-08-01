@@ -1,6 +1,7 @@
 # Bosch_Bootcamp_Net
 
 This project was developed using MS SQL, .NET, ANGULAR.
+It was developed at Bootcamp and is a learning project.
 
 N-Tier architecture was used.
 
